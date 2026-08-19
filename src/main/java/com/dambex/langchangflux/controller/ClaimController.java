@@ -34,7 +34,7 @@ public class ClaimController {
             @RequestParam(value = "question", defaultValue = "Are there any claims?") String question) {
 
         return Mono.fromCallable(() -> claimAgent.chat(memoryId, question))
-                .subscribeOn(Schedulers.boundedElastic()) // <--- This is the magic fix
-                .flatMapMany(flux -> flux); // Unwraps the Flux<String> from the Agent
+                .subscribeOn(Schedulers.boundedElastic()) 
+                .flatMapMany(flux -> flux); 
     }
 }
